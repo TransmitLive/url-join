@@ -148,4 +148,11 @@ describe('url join', function () {
   it('should return an empty string if no arguments are supplied', function() {
     urljoin().should.eql('');
   });
+
+  it('should support single ? &', function () {
+    urljoin('http://foobar.com', '?', 'test=true')
+      .should.eql('http://foobar.com?test=true');
+    urljoin('http://foobar.com', '?', 'test=true', '&', 'foo=bar')
+      .should.eql('http://foobar.com?test=true&foo=bar');
+  });
 });
